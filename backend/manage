@@ -1,0 +1,10 @@
+#!/bin/bash
+# Wrapper script for manage.py that automatically uses venv
+# Usage: ./manage <command> [args]
+# Example: ./manage runserver
+# Example: ./manage migrate
+# Example: ./manage shell
+
+cd "$(dirname "$0")"
+source venv/bin/activate
+python manage.py "$@"
