@@ -59,15 +59,15 @@ const Dashboard = () => {
       </div>
 
       {/* Summary Card */}
-      <div className="bg-gradient-to-r from-turno-primary to-turno-primary-dark rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 lg:mb-8 text-white">
-        <h2 className="text-lg sm:text-xl font-semibold mb-2">Total Vehicles</h2>
-        <p className="text-3xl sm:text-4xl font-bold">{totalVehicles}</p>
+      <div className="bg-gradient-to-r from-turno-primary via-turno-primary-dark to-turno-primary rounded-2xl shadow-xl p-6 sm:p-8 mb-6 sm:mb-8 lg:mb-10 text-white animate-fade-in">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-3">Total Vehicles</h2>
+        <p className="text-4xl sm:text-5xl font-bold">{totalVehicles}</p>
       </div>
 
       {/* Brand Statistics */}
-      <div className="bg-turno-card-bg rounded-lg shadow-md overflow-hidden">
-        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-turno-primary-light border-b border-turno-primary-light">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Vehicles by Brand</h2>
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 animate-fade-in">
+        <div className="px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-turno-primary-light to-white border-b border-gray-100">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Vehicles by Brand</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -139,20 +139,20 @@ const Dashboard = () => {
             return (
               <div
                 key={index}
-                className="bg-turno-card-bg rounded-lg shadow-md p-4 sm:p-6 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl shadow-md p-5 sm:p-6 hover:shadow-xl transition-all border border-gray-100 hover:-translate-y-1 animate-fade-in"
               >
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
                   {item.brand}
                 </h3>
-                <p className="text-2xl sm:text-3xl font-bold text-turno-primary mb-2">
+                <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-turno-primary to-turno-primary-dark bg-clip-text text-transparent mb-2">
                   {item.total}
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                <p className="text-sm text-gray-600 mb-4">
                   {percentage}% of total
                 </p>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                   <div
-                    className="bg-turno-primary h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-turno-primary to-turno-primary-dark h-3 rounded-full transition-all duration-500"
                     style={{ width: `${percentage}%` }}
                   ></div>
                 </div>

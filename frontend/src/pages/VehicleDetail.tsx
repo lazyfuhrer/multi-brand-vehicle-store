@@ -186,11 +186,11 @@ const VehicleDetail = () => {
         Back to Vehicles
       </Link>
 
-      <div className="bg-turno-card-bg rounded-lg shadow-lg overflow-hidden border border-turno-primary-light">
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in">
         <div className="flex flex-col lg:flex-row">
           {/* Vehicle Image */}
-          <div className="w-full lg:w-1/2">
-            <div className="relative h-64 sm:h-80 lg:h-full bg-gray-200">
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative h-64 sm:h-80 lg:h-full bg-gradient-to-br from-gray-100 to-gray-200">
               <img
                 src={vehicle.image_url}
                 alt={`${vehicle.brand} ${vehicle.name}`}
@@ -199,37 +199,39 @@ const VehicleDetail = () => {
                   (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x600?text=No+Image';
                 }}
               />
+              <div className="absolute top-4 right-4">
+                <span className="inline-block px-4 py-2 text-sm font-semibold rounded-full bg-white/90 backdrop-blur-sm text-turno-primary shadow-lg">
+                  {vehicle.fuel_type}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Vehicle Details */}
-          <div className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8">
-            <div className="mb-4">
-              <span className="inline-block px-3 py-1 text-xs sm:text-sm font-semibold rounded-full bg-turno-primary-light text-turno-primary-dark mb-2">
-                {vehicle.fuel_type}
-              </span>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+          <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-10">
+            <div className="mb-6">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
                 {vehicle.brand} {vehicle.name}
               </h1>
-              <p className="text-2xl sm:text-3xl font-bold text-turno-price mb-4">
+              <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-turno-price to-turno-price-dark bg-clip-text text-transparent mb-4">
                 ₹{vehicle.price.toLocaleString()}
               </p>
             </div>
 
-            <div className="mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Description</h2>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{vehicle.description}</p>
+            <div className="mb-6">
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">Description</h2>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">{vehicle.description}</p>
             </div>
 
             {/* Bookmark Button */}
             <button
               onClick={handleBookmark}
               disabled={bookmarkLoading}
-              className={`w-full mb-4 px-4 sm:px-6 py-2.5 sm:py-3 rounded-md text-sm sm:text-base font-medium transition-colors ${
+              className={`w-full mb-4 px-6 py-3 rounded-xl text-base font-semibold transition-all ${
                 isBookmarked
-                  ? 'bg-turno-accent text-white hover:bg-turno-warning'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              } ${bookmarkLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  ? 'bg-gradient-to-r from-turno-accent to-turno-warning text-white shadow-lg shadow-turno-accent/30'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              } ${bookmarkLoading ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md transform hover:-translate-y-0.5'}`}
             >
               {bookmarkLoading
                 ? 'Loading...'
@@ -241,8 +243,8 @@ const VehicleDetail = () => {
         </div>
 
         {/* Booking Form */}
-        <div className="border-t border-gray-200 p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Book Now</h2>
+        <div className="border-t border-gray-200 bg-gray-50/50 p-6 md:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Book Now</h2>
           
           {bookingSuccess && (
             <div className="mb-4 p-3 sm:p-4 bg-turno-success-light border border-turno-success rounded-md">
@@ -280,7 +282,7 @@ const VehicleDetail = () => {
                       type="text"
                       id="customer_name"
                       name="customer_name"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary bg-white transition-all hover:border-gray-300"
                       placeholder="Your name"
                     />
                     <FormikErrorMessage
@@ -301,7 +303,7 @@ const VehicleDetail = () => {
                       type="email"
                       id="customer_email"
                       name="customer_email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary bg-white transition-all hover:border-gray-300"
                       placeholder="your.email@example.com"
                     />
                     <FormikErrorMessage
@@ -315,7 +317,7 @@ const VehicleDetail = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-turno-primary text-white rounded-md text-sm sm:text-base font-medium hover:bg-turno-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-turno-primary to-turno-primary-dark text-white rounded-xl text-base font-semibold hover:shadow-lg hover:shadow-turno-primary/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5 disabled:transform-none"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Booking'}
                 </button>

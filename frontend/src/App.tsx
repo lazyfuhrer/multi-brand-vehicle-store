@@ -11,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-turno-bg-light">
+      <div className="min-h-screen">
         <Navigation />
         <Routes>
           <Route path="/" element={<Navigate to="/vehicles" replace />} />

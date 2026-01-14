@@ -73,8 +73,13 @@ const VehicleFilters = ({ onFilterChange, initialFilters = {} }: VehicleFiltersP
   };
 
   return (
-    <div className="bg-turno-card-bg rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6 border border-turno-primary-light">
-      <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Filters</h2>
+    <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 mb-6 sm:mb-8 border border-gray-100 animate-fade-in">
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-5 flex items-center gap-2">
+        <svg className="w-5 h-5 text-turno-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+        </svg>
+        Filters
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {/* Brand Filter */}
         <div>
@@ -84,7 +89,7 @@ const VehicleFilters = ({ onFilterChange, initialFilters = {} }: VehicleFiltersP
           <select
             value={filters.brand || ''}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => handleChange('brand', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary"
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary bg-white transition-all hover:border-gray-300"
           >
             <option value="">All Brands</option>
             {brands.map((brand) => (
@@ -103,7 +108,7 @@ const VehicleFilters = ({ onFilterChange, initialFilters = {} }: VehicleFiltersP
           <select
             value={filters.fuel_type || ''}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => handleChange('fuel_type', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary"
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-turno-primary focus:border-turno-primary bg-white transition-all hover:border-gray-300"
           >
             <option value="">All Types</option>
             {fuelTypes.map((type) => (
@@ -127,16 +132,16 @@ const VehicleFilters = ({ onFilterChange, initialFilters = {} }: VehicleFiltersP
         />
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4">
+      <div className="flex flex-col sm:flex-row gap-3 mt-6">
         <button
           onClick={handleApply}
-          className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-2 bg-turno-primary text-white rounded-md hover:bg-turno-primary-dark transition-colors font-medium text-sm sm:text-base"
+          className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-turno-primary to-turno-primary-dark text-white rounded-xl hover:shadow-lg hover:shadow-turno-primary/30 transition-all font-semibold text-sm sm:text-base transform hover:-translate-y-0.5"
         >
           Apply Filters
         </button>
         <button
           onClick={handleReset}
-          className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors font-medium text-sm sm:text-base"
+          className="w-full sm:w-auto px-6 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all font-medium text-sm sm:text-base"
         >
           Reset
         </button>

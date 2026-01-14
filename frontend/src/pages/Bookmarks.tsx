@@ -109,18 +109,18 @@ const Bookmarks = () => {
   }
 
   return (
-    <Container className="py-4 sm:py-6 lg:py-8">
-      <div className="mb-4 sm:mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
+    <Container className="py-6 sm:py-8 lg:py-10">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">My Bookmarks</h1>
-            <p className="text-sm sm:text-base text-gray-600">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">My Bookmarks</h1>
+            <p className="text-base sm:text-lg text-gray-600">
               {bookmarks.length} {bookmarks.length === 1 ? 'bookmark' : 'bookmarks'}
             </p>
           </div>
           <Link
             to="/vehicles"
-            className="w-full sm:w-auto text-center px-4 py-2 bg-turno-primary text-white rounded-md hover:bg-turno-primary-dark transition-colors font-medium text-sm sm:text-base"
+            className="w-full sm:w-auto text-center px-6 py-3 bg-gradient-to-r from-turno-primary to-turno-primary-dark text-white rounded-xl hover:shadow-lg hover:shadow-turno-primary/30 transition-all font-semibold text-base transform hover:-translate-y-0.5"
           >
             Browse Vehicles
           </Link>

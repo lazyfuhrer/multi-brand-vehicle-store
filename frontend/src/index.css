@@ -2,11 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ensure body has the background color */
+/* Modern font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Body styling with modern gradient background */
 body {
-  background-color: #EDF5F0;
+  background: linear-gradient(135deg, #f0f9f4 0%, #e8f5e9 100%);
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Improve touch targets on mobile */
@@ -14,8 +27,42 @@ button, a {
   touch-action: manipulation;
 }
 
-/* Better text rendering on mobile */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #059669;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #047857;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
 }

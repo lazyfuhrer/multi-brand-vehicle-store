@@ -4,6 +4,20 @@ A full-stack web application for browsing, booking, and managing vehicles from m
 
 > 🐳 **Recommended**: Use Docker Compose for the easiest setup - everything runs automatically with a single command! See [Quick Start with Docker Compose](#-quick-start-with-docker-compose-recommended-) below.
 
+## 🎥 Demo Video
+
+Watch the application in action! Check out our demo video:
+
+**[📹 Watch Demo Video](https://drive.google.com/file/d/1UkEfTLZdfYpQ1-dsjs4GHR-lppRUgT_u/view?usp=sharing)**
+
+The demo showcases:
+- Vehicle browsing and filtering
+- Vehicle detail pages
+- Booking system
+- Bookmark functionality
+- Dashboard with statistics
+- Responsive design across devices
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Django](https://img.shields.io/badge/django-5.2.10-green.svg)
@@ -12,6 +26,7 @@ A full-stack web application for browsing, booking, and managing vehicles from m
 
 ## 📋 Table of Contents
 
+- [Demo Video](#-demo-video)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
