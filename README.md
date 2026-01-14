@@ -133,10 +133,6 @@ multi-brand-vehicle-store/
 │   ├── package.json
 │   ├── tailwind.config.js    # Tailwind configuration
 │   └── vite.config.ts        # Vite configuration
-│
-├── Vehicle_Store_API.postman_collection.json  # Postman collection
-├── Vehicle_Store_API.postman_environment.json # Postman environment
-├── POSTMAN_COLLECTION_README.md               # Postman docs
 └── README.md                                  # This file
 ```
 
