@@ -116,7 +116,7 @@ def seed_vehicles_on_migrate(sender, **kwargs):
                 'name': 'A4',
                 'price': 3320000,  # 40000 USD * 83 = 3,320,000 INR
                 'fuel_type': 'Petrol',
-                'image_url': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800',
+                'image_url': 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyfGVufDB8fDB8fHww?w=800',
                 'description': 'Premium compact sedan with quattro all-wheel drive and refined interior.'
             },
             {
@@ -124,7 +124,7 @@ def seed_vehicles_on_migrate(sender, **kwargs):
                 'name': 'Q7',
                 'price': 4980000,  # 60000 USD * 83 = 4,980,000 INR
                 'fuel_type': 'Diesel',
-                'image_url': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800',
+                'image_url': 'https://images.unsplash.com/photo-1704340142770-b52988e5b6eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxzZWFyY2h8MXx8Y2FyfGVufDB8fDB8fHww?w=800',
                 'description': 'Luxury three-row SUV with advanced safety features and premium amenities.'
             },
             {

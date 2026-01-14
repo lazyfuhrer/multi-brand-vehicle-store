@@ -2,6 +2,8 @@
 
 A full-stack web application for browsing, booking, and managing vehicles from multiple brands. Built with Django REST Framework (backend) and React + TypeScript (frontend).
 
+> 🐳 **Recommended**: Use Docker Compose for the easiest setup - everything runs automatically with a single command! See [Quick Start with Docker Compose](#-quick-start-with-docker-compose-recommended-) below.
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Django](https://img.shields.io/badge/django-5.2.10-green.svg)
@@ -13,9 +15,9 @@ A full-stack web application for browsing, booking, and managing vehicles from m
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Running the Application](#-running-the-application)
+- [Quick Start with Docker Compose](#-quick-start-with-docker-compose-recommended-)
+- [Manual Installation](#-manual-installation-alternative)
+- [Running the Application](#-running-the-application-manual-setup)
 - [API Documentation](#-api-documentation)
 - [Frontend Features](#-frontend-features)
 - [Database Management](#-database-management)
@@ -140,7 +142,15 @@ multi-brand-vehicle-store/
 
 ## 📦 Prerequisites
 
-Before you begin, ensure you have the following installed:
+### For Docker Compose (Recommended)
+
+- **[Docker](https://docs.docker.com/get-docker/)** (version 20.10+)
+- **[Docker Compose](https://docs.docker.com/compose/install/)** (version 2.0+)
+- **Git**
+
+> **Note**: With Docker Compose, you don't need to install Python, Node.js, or PostgreSQL separately - everything runs in containers!
+
+### For Manual Installation
 
 - **Python** 3.10 or higher
 - **Node.js** 18.x or higher
@@ -148,7 +158,127 @@ Before you begin, ensure you have the following installed:
 - **PostgreSQL** 12 or higher
 - **Git**
 
-## 🚀 Installation
+## 🚀 Quick Start with Docker Compose (Recommended) 🐳
+
+**The fastest and easiest way to get started!** Docker Compose sets up everything automatically - no manual database setup, no environment configuration needed.
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) (version 20.10+)
+- [Docker Compose](https://docs.docker.com/compose/install/) (version 2.0+)
+
+### Installation Steps
+
+#### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd multi-brand-vehicle-store
+```
+
+#### 2. Create Environment File (Optional)
+
+The application works with default values, but you can customize settings:
+
+```bash
+# Copy the example environment file
+cp docker-compose.env.example .env
+
+# Edit .env if needed (optional - defaults work for local development)
+nano .env
+```
+
+**Default values work out of the box:**
+- Database: `vehicle_store` (auto-created)
+- Backend: `http://localhost:8000`
+- Frontend: `http://localhost:5173`
+- Auto-seeding: Enabled (20 vehicles)
+
+#### 3. Start All Services
+
+```bash
+# Build and start all services (database, backend, frontend)
+docker compose up --build
+```
+
+**That's it!** The application will:
+- ✅ Automatically create PostgreSQL database
+- ✅ Run database migrations
+- ✅ Seed 20 sample vehicles automatically
+- ✅ Start Django backend server
+- ✅ Build and serve React frontend
+
+#### 4. Access the Application
+
+Once all containers are running, access:
+
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8000/api
+- **Django Admin**: http://localhost:8000/admin
+
+### Common Docker Commands
+
+```bash
+# Start services in background
+docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (clears database)
+docker compose down -v
+
+# Rebuild after code changes
+docker compose up --build
+
+# Restart a specific service
+docker compose restart backend
+docker compose restart frontend
+```
+
+### What's Included
+
+Docker Compose automatically sets up:
+- ✅ **PostgreSQL Database**: Auto-configured, no manual setup needed
+- ✅ **Django Backend**: Auto-migrations, auto-seeding, CORS configured
+- ✅ **React Frontend**: Production build served with Nginx
+- ✅ **Network**: All services connected via Docker network
+- ✅ **Environment**: All environment variables configured
+
+### Troubleshooting
+
+**Port already in use?**
+- Change ports in `.env` file: `BACKEND_PORT=8001`, `FRONTEND_PORT=5174`
+
+**Database connection issues?**
+- Check if database container is healthy: `docker compose ps db`
+- View logs: `docker compose logs db`
+
+**Frontend not loading?**
+- Check if backend is running: `docker compose ps backend`
+- View logs: `docker compose logs frontend`
+
+**Need to reseed data?**
+```bash
+docker compose exec backend python manage.py clear_vehicles
+docker compose exec backend python manage.py seed_vehicles
+```
+
+---
+
+## 🛠 Manual Installation (Alternative)
+
+If you prefer to run services manually without Docker, follow these steps:
+
+### Prerequisites
+
+- Python 3.10+
+- Node.js 18+
+- PostgreSQL 15+
+- npm or yarn
 
 ### 1. Clone the Repository
 
@@ -250,13 +380,9 @@ VITE_API_BASE_URL=http://localhost:8000/api
 
 > **Note**: The frontend defaults to `http://localhost:8000/api` if no environment variable is set. Only create `.env` if you need to change this.
 
-## 🏃 Running the Application
+## 🏃 Running the Application (Manual Setup)
 
-> ✅ **Data is automatically seeded after migrations!** After running `python manage.py migrate`, your database will be populated with sample vehicles. No manual seeding required.
-
-### Option 1: Run Both Servers Manually
-
-#### Backend Server
+### Backend Server
 
 ```bash
 cd backend
@@ -266,7 +392,7 @@ python manage.py runserver
 
 The backend will run on `http://localhost:8000`
 
-#### Frontend Server
+### Frontend Server
 
 ```bash
 cd frontend
@@ -275,7 +401,7 @@ npm run dev
 
 The frontend will run on `http://localhost:5173` (or another port if 5173 is busy)
 
-### Option 2: Use Helper Scripts
+### Helper Scripts
 
 #### Backend Helper Scripts
 
@@ -675,18 +801,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **TypeScript Errors:**
 - Run `npm run build` to see detailed errors
 - Check type definitions in `types/index.ts`
-
-## 📞 Support
-
-For issues, questions, or contributions, please open an issue on the repository.
-
-## 🙏 Acknowledgments
-
-- Django REST Framework for the excellent API framework
-- React team for the amazing frontend library
-- Tailwind CSS for the utility-first CSS framework
-- All contributors and testers
-
----
-
-**Built with ❤️ using Django, React, and TypeScript**

@@ -1,8 +1,9 @@
 # Environment variables
 .env
 *.env
-# Exception: .env.example should be committed
+# Exception: .env.example files should be committed
 !.env.example
+!docker-compose.env.example
 
 # Python
 __pycache__/
